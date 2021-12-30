@@ -1,0 +1,49 @@
+type: object
+required:
+  - current_page
+  - data
+  - output_data
+  - firs_page_url
+  - from
+  - last_page
+  - last_page_url
+  - next_page_url
+  - path
+  - per_page
+  - prev_page_url
+  - to
+  - total
+properties:
+  current_page:
+    type: integer
+    example: 1
+  data:
+    type: string
+    example: アウトプットのデータを配列で返却
+  output_data:
+    type: string
+  firs_page_url:
+    type: string
+    example: http://manage.sample/api/v1/outputs?page=1
+  from:
+    type: string
+  last_page:
+    type: string
+    example: http://manage.sample/api/v1/outputs?page=1
+  next_page_url:
+    type: string
+    example: http://manage.sample/api/v1/outputs?page=2
+  path:
+    type: string
+    example: http://manage.sample/api/v1/outputs
+  per_page:
+    type: string
+    example: 25
+  prev_page_url:
+    type: string
+    example: http://manage.sample/api/v1/outputs?page=1
+  to:
+    type: string
+  total:
+    type: integer
+    exaample: 0

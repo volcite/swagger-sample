@@ -1,0 +1,15 @@
+type: array
+required:
+  - id
+  - content_id
+  - student_id
+  - comment
+properties:
+  id:
+    type: integer
+  content_id:
+    type: integer
+  student_id:
+    type: integer
+  comment:
+    type: string

@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: コンテンツ管理システム API
+  description: コンテンツ管理システムのAPI仕様書です
+  version: 1.0.0
+servers:
+  - url: https://dev.sample-server.com/v1
+    description: Development server
+paths:
+  $ref: ./paths/index.yml
+components:
+  $ref: ./components/index.yml
+security:
+  - bearerAuth: []
+tags:
+  - name: output
+    description: アウトプット
+  - name: student
+    description: 受講生
+  - name: user
+    description: 講師

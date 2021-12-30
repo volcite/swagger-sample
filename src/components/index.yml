@@ -1,0 +1,22 @@
+schemas:
+  user:
+    $ref: ./user.yml
+  userUpdate:
+    $ref: ./userUpdate.yml
+  student:
+    $ref: ./student.yml
+  course:
+    $ref: ./course.yml
+  content:
+    $ref: ./content.yml
+  output:
+    $ref: ./output.yml
+  outputSearch:
+    $ref: ./outputSearch.yml
+  outputSearchResponse:
+    $ref: ./outputSearchResponse.yml
+securitySchemes:
+  bearerAuth:
+    type: http
+    scheme: bearer
+    bearerFormat: JWT

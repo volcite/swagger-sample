@@ -1,0 +1,27 @@
+type: object
+required:
+  - id
+  - user_id
+  - name
+  - email
+  - age
+  - gender
+  - remarks
+  - is_active
+properties:
+  id:
+    type: integer
+  user_id:
+    type: integer
+  name:
+    type: string
+  email:
+    type: string
+  age:
+    type: integer
+  gender:
+    type: integer
+  remarks:
+    type: string
+  is_active:
+    type: boolean

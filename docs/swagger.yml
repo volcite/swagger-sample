@@ -1,0 +1,299 @@
+openapi: 3.0.0
+info:
+  title: コンテンツ管理システム API
+  description: コンテンツ管理システムのAPI仕様書です
+  version: 1.0.0
+servers:
+  - url: 'https://dev.sample-server.com/v1'
+    description: Development server
+paths:
+  /output:
+    get:
+      tags:
+        - output
+      summary: アウトプット一覧検索取得
+      description: アウトプット一覧検索取得APIです
+      externalDocs:
+        description: 仕様書
+        url: 'https://volcite.github.io/wiki/specification/outputSearch.html'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/outputSearch'
+      responses:
+        '200':
+          description: アウトプット一覧データ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/outputSearchResponse'
+  '/user/{id}':
+    post:
+      tags:
+        - user
+      summary: ユーザ情報更新API
+      description: ユーザ情報更新APIです
+      externalDocs:
+        description: 仕様書
+        url: $ROOT_URL/specification/userUpdate.html
+      parameters:
+        - name: id
+          in: path
+          description: ユーザID
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: ユーザ情報
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userUpdate'
+      responses:
+        '200':
+          description: 登録後のユーザデータ
+          security:
+            - bearerAuth: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '422':
+          description: バリデーションエラー
+          security:
+            - bearerAuth: []
+          content:
+            application/json: null
+components:
+  schemas:
+    user:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - authority
+        - is_active
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: テスト太郎
+        email:
+          type: string
+          example: testtarou@test.com
+        authority:
+          type: integer
+          example: 1
+        is_active:
+          type: boolean
+          example: 1
+    userUpdate:
+      type: object
+      required:
+        - name
+        - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+    student:
+      type: object
+      required:
+        - id
+        - user_id
+        - name
+        - email
+        - age
+        - gender
+        - remarks
+        - is_active
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        age:
+          type: integer
+        gender:
+          type: integer
+        remarks:
+          type: string
+        is_active:
+          type: boolean
+    course:
+      type: object
+      required:
+        - id
+        - user_id
+        - name
+        - is_active
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        name:
+          type: string
+        is_active:
+          type: boolean
+    content:
+      type: object
+      required:
+        - id
+        - course_id
+        - name
+        - url
+        - is_active
+      properties:
+        id:
+          type: integer
+        course_id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        is_active:
+          type: boolean
+    output:
+      type: array
+      required:
+        - id
+        - content_id
+        - student_id
+        - comment
+      properties:
+        id:
+          type: integer
+        content_id:
+          type: integer
+        student_id:
+          type: integer
+        comment:
+          type: string
+    outputSearch:
+      type: object
+      required:
+        - per_page
+        - page
+        - sortKey
+        - order
+        - name
+        - email
+        - gender
+        - age
+        - course
+      properties:
+        per_page:
+          type: integer
+          example: 25
+        page:
+          type: integer
+          example: 1
+        sortKey:
+          type: string
+          example: id
+        order:
+          type: string
+          example: desc
+        name:
+          type: string
+          example: student
+        email:
+          type: string
+          example: student@student.com
+        gender:
+          type: array
+          example:
+            - 1
+            - 2
+            - 3
+        age:
+          type: array
+          example:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+        course:
+          type: array
+          example:
+            - 1
+            - 2
+    outputSearchResponse:
+      type: object
+      required:
+        - current_page
+        - data
+        - output_data
+        - firs_page_url
+        - from
+        - last_page
+        - last_page_url
+        - next_page_url
+        - path
+        - per_page
+        - prev_page_url
+        - to
+        - total
+      properties:
+        current_page:
+          type: integer
+          example: 1
+        data:
+          type: string
+          example: アウトプットのデータを配列で返却
+        output_data:
+          type: string
+        firs_page_url:
+          type: string
+          example: 'http://manage.sample/api/v1/outputs?page=1'
+        from:
+          type: string
+        last_page:
+          type: string
+          example: 'http://manage.sample/api/v1/outputs?page=1'
+        next_page_url:
+          type: string
+          example: 'http://manage.sample/api/v1/outputs?page=2'
+        path:
+          type: string
+          example: 'http://manage.sample/api/v1/outputs'
+        per_page:
+          type: string
+          example: 25
+        prev_page_url:
+          type: string
+          example: 'http://manage.sample/api/v1/outputs?page=1'
+        to:
+          type: string
+        total:
+          type: integer
+          exaample: 0
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
+tags:
+  - name: output
+    description: アウトプット
+  - name: student
+    description: 受講生
+  - name: user
+    description: 講師

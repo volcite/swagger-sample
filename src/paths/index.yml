@@ -1,0 +1,4 @@
+/output:
+  $ref: ./output.yml
+/user/{id}:
+  $ref: ./user.yml

@@ -1,0 +1,37 @@
+post:
+  tags:
+    - user
+  summary: ユーザ情報更新API
+  description: ユーザ情報更新APIです
+  externalDocs:
+    description: 仕様書
+    url: $ROOT_URL/specification/userUpdate.html
+  parameters:
+    - name: id
+      in: path
+      description: ユーザID
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    description: ユーザ情報
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/userUpdate"
+  responses:
+    "200":
+      description: 登録後のユーザデータ
+      security:
+        - bearerAuth: []
+      content:
+        application/json:
+          schema:
+              $ref: "#/components/schemas/user"
+    "422":
+      description: バリデーションエラー
+      security:
+        - bearerAuth: []
+      content:
+        application/json:
+            

@@ -1,0 +1,23 @@
+type: object
+required:
+  - id
+  - name
+  - email
+  - authority
+  - is_active
+properties:
+  id:
+    type: integer
+    example: 1
+  name:
+    type: string
+    example: テスト太郎
+  email:
+    type: string
+    example: testtarou@test.com
+  authority:
+    type: integer
+    example: 1
+  is_active:
+    type: boolean
+    example: 1

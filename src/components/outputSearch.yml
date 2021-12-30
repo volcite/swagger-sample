@@ -1,0 +1,39 @@
+type: object
+required:
+  - per_page
+  - page
+  - sortKey
+  - order
+  - name
+  - email
+  - gender
+  - age
+  - course
+properties:
+  per_page:
+    type: integer
+    example: 25
+  page:
+    type: integer
+    example: 1
+  sortKey:
+    type: string
+    example: id
+  order:
+    type: string
+    example: desc
+  name:
+    type: string
+    example: student
+  email:
+    type: string
+    example: student@student.com
+  gender:
+    type: array
+    example: [1,2,3]
+  age:
+    type: array
+    example: [1,2,3,4,5,6]
+  course:
+    type: array
+    example: [1,2]

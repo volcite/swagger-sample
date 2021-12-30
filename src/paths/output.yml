@@ -1,0 +1,22 @@
+get:
+  tags:
+    - output
+  summary: アウトプット一覧検索取得
+  description: アウトプット一覧検索取得APIです
+  externalDocs:
+    description: 仕様書
+    url: https://volcite.github.io/wiki/specification/outputSearch.html
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/outputSearch'
+  responses:
+    "200":
+      description: アウトプット一覧データ
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/outputSearchResponse"

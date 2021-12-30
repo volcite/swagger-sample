@@ -1,0 +1,89 @@
+get:
+  tags:
+    - productType
+  summary: 商品種別詳細取得
+  description: 商品種別詳細取得APIです
+  externalDocs:
+    description: 仕様書
+    url: https://volcite.github.io/wiki/specification/sample.html
+  security: []
+  
+  responses:
+    '200':
+      description: 商品種別のデータ
+      content:
+        application/json:
+          schema: 
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductType'
+            example:
+              - id: 1
+                name: sample1
+                pattern: 1
+                remarks: 備考
+                created_at: 2021-08-05
+                updated_at: 2021-08-05
+                deleted_at: null
+                min_order: 1
+                max_order: 100
+                validation:
+                  validate1: aaa
+                  validate2: bbb
+              - id: 2
+                name: sample2
+                pattern: 2
+                remarks: 備考
+                created_at: 2021-08-05
+                updated_at: 2021-08-05
+                deleted_at: null
+                min_order: 1
+                max_order: 100
+                validation:
+                  validate1: aaa
+                  validate2: bbb
+post:
+  tags: 
+    - productType
+  summary: 商品種別作成
+  description: 商品種別作成APIです
+  externalDocs:
+    description: 仕様書
+    url: https://volcite.github.io/wiki/specification/sample.html
+  parameters:  
+    - name: id
+      in: path
+      description: 商品種別ID
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    description: 商品種別
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ProductType'
+  responses:
+    '200':
+      description: 商品種別のデータ
+      security:
+        - bearerAuth: []
+      content:
+        application/json:
+          schema: 
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductType'
+            example:
+              - id: 1
+                name: sample1
+                pattern: 1
+                remarks: 備考
+                created_at: 2021-08-05
+                updated_at: 2021-08-05
+                deleted_at: null
+                min_order: 1
+                max_order: 100
+                validation:
+                  validate1: aaa
+                  validate2: bbb
